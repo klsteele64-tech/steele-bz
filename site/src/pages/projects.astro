@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import GitHubRepos from "../components/GitHubRepos.astro";
+import projects from "../data/projects.json";
+---
+
+<BaseLayout title="Projects" description="Curated projects and GitHub repositories by Kasey Steele.">
+  <h1>Projects</h1>
+  <p class="lead">Featured work and live repositories from GitHub.</p>
+
+  <h2>Featured</h2>
+  <div class="card-grid">
+    {projects.map((project) => (
+      <Card
+        title={project.title}
+        description={project.description}
+        tags={project.tags}
+        href={project.url}
+      />
+    ))}
+  </div>
+
+  <h2>GitHub repositories</h2>
+  <GitHubRepos />
+</BaseLayout>

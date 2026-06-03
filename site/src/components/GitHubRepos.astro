@@ -1,0 +1,61 @@
+<div id="github-repos" class="github-repos">
+  <p class="meta loading">Loading GitHub repositories…</p>
+</div>
+
+<script>
+  const container = document.getElementById("github-repos");
+  if (!container) throw new Error("Missing github-repos container");
+
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function renderRepos(repos) {
+    if (repos.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <p>No public repositories yet. They will appear here once published on
+            <a href="https://github.com/klsteele64-tech" rel="noopener noreferrer" target="_blank">GitHub</a>.</p>
+        </div>`;
+      return;
+    }
+
+    container.innerHTML = `<div class="card-grid">${repos
+      .map(
+        (repo) => `
+        <article class="card">
+          <h3><a href="${escapeHtml(repo.html_url)}" rel="noopener noreferrer" target="_blank">${escapeHtml(repo.name)}</a></h3>
+          <p>${escapeHtml(repo.description ?? "No description")}</p>
+          <p class="meta">${repo.stargazers_count} star${repo.stargazers_count === 1 ? "" : "s"}</p>
+          ${
+            repo.language
+              ? `<div class="tags"><span class="tag">${escapeHtml(repo.language)}</span></div>`
+              : ""
+          }
+        </article>`,
+      )
+      .join("")}</div>`;
+  }
+
+  fetch("/api/github/repos")
+    .then((response) => {
+      if (!response.ok) throw new Error("API error");
+      return response.json();
+    })
+    .then(renderRepos)
+    .catch(() => {
+      container.innerHTML = `
+        <div class="empty-state">
+          <p>Could not load GitHub repositories right now.</p>
+          <p class="meta">Visit <a href="https://github.com/klsteele64-tech" rel="noopener noreferrer" target="_blank">GitHub</a> directly.</p>
+        </div>`;
+    });
+</script>
+
+<style>
+  .loading {
+    margin: 0;
+  }
+</style>

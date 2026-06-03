@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  tags?: string[];
+  href?: string;
+  meta?: string;
+}
+
+const { title, description, tags = [], href, meta } = Astro.props;
+---
+
+<article class="card">
+  <h3>
+    {href ? (
+      <a href={href} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} target={href.startsWith("http") ? "_blank" : undefined}>
+        {title}
+      </a>
+    ) : (
+      title
+    )}
+  </h3>
+  {description && <p>{description}</p>}
+  {meta && <p class="meta">{meta}</p>}
+  {tags.length > 0 && (
+    <div class="tags">
+      {tags.map((tag) => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+  )}
+  <slot />
+</article>

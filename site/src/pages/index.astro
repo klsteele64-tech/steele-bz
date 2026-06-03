@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import projects from "../data/projects.json";
+import apps from "../data/apps.json";
+
+const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
+const featuredApps = apps.filter((a) => a.featured).slice(0, 3);
+---
+
+<BaseLayout
+  title="Home"
+  description="Projects, apps, and experiments by Kasey Steele."
+>
+  <h1>Kasey Steele</h1>
+  <p class="lead">
+    Developer portfolio and app hub. I build web apps, experiment with tooling, and host projects here at steele.bz.
+  </p>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="/projects">View projects</a>
+    <a class="btn" href="/apps">Browse apps</a>
+  </div>
+
+  <h2>Featured projects</h2>
+  <div class="card-grid">
+    {featuredProjects.map((project) => (
+      <Card
+        title={project.title}
+        description={project.description}
+        tags={project.tags}
+        href={project.url}
+      />
+    ))}
+  </div>
+  <a class="section-link" href="/projects">All projects →</a>
+
+  <h2>Hosted apps</h2>
+  <div class="card-grid">
+    {featuredApps.map((app) => (
+      <Card
+        title={app.title}
+        description={app.description}
+        tags={app.tags}
+        href={app.path}
+      />
+    ))}
+  </div>
+  <a class="section-link" href="/apps">All apps →</a>
+</BaseLayout>

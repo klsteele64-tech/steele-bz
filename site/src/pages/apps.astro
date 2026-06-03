@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import apps from "../data/apps.json";
+---
+
+<BaseLayout title="Apps" description="Web apps hosted at steele.bz.">
+  <h1>Apps</h1>
+  <p class="lead">Interactive apps and sites hosted under <code>/apps/</code> on this domain.</p>
+  <div class="card-grid">
+    {apps.map((app) => (
+      <Card
+        title={app.title}
+        description={app.description}
+        tags={app.tags}
+        href={app.path}
+      />
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  code {
+    font-size: 0.9em;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+  }
+</style>

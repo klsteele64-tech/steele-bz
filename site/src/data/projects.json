@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "steele-bz",
+    "title": "Steele.bz",
+    "description": "Personal portfolio and app hub — this site. Monorepo with Astro, GitHub integration, and path-based app hosting on Cloudflare Pages.",
+    "tags": ["Astro", "Cloudflare Pages", "TypeScript"],
+    "url": "https://github.com/klsteele64-tech/steele-bz",
+    "featured": true
+  },
+  {
+    "slug": "burger-buds-menu",
+    "title": "Burger Buds Menu",
+    "description": "Mobile-friendly menu web app for Burger Buds locations in Enumclaw and Maple Valley, WA. Built with React, Vite, and Capacitor.",
+    "tags": ["React", "Vite", "Capacitor"],
+    "url": "https://github.com/klsteele64-tech/burger-buds-menu",
+    "featured": true
+  }
+]

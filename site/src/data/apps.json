@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "burger-buds",
+    "title": "Burger Buds Menu",
+    "description": "Interactive menu for Burger Buds — smash burgers in Enumclaw and Maple Valley, WA.",
+    "path": "/apps/burger-buds/",
+    "tags": ["React", "Vite"],
+    "featured": true
+  }
+]
