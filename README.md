@@ -46,7 +46,7 @@ Open the portfolio at `http://localhost:4321` during `npm run dev`. After `npm r
    - `GITHUB_TOKEN` — fine-grained PAT with read-only access to public repositories
 5. Attach custom domain **steele.bz** (and optionally redirect `www.steele.bz` → apex).
 
-Pages Functions live in `functions/` at the repo root. The GitHub API proxy is at `/api/github/repos`.
+See [docs/DEPLOY.md](docs/DEPLOY.md) for step-by-step Cloudflare Pages and domain setup.
 
 ### Creating a GitHub token
 
