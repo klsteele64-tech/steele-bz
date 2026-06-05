@@ -8,10 +8,30 @@ Personal portfolio and app hub for [steele.bz](https://steele.bz). Built as a mo
 steele-bz/
 ├── site/                 # Astro portfolio (home, projects, apps, blog, about, contact)
 ├── apps/burger-buds/     # React + Vite menu app at /apps/burger-buds/
-├── functions/            # Cloudflare Pages Functions (/api/github/repos)
+├── functions/            # Cloudflare Pages Functions (GitHub API + Training API)
+├── training-api/         # Hono app + bundled lesson content
+├── examples/             # Site integration sample (vanilla JS fetch)
 ├── scripts/build-all.mjs # Unified build → dist/
 └── dist/                 # Deploy output (gitignored)
 ```
+
+## Cursor Training API
+
+The 40-lesson baseline curriculum is served as a Web API on this Pages project:
+
+| Endpoint | Description |
+|----------|-------------|
+| `GET /health` | Health probe |
+| `GET /api/v1/catalog` | Tracks + lessons |
+| `GET /api/v1/lessons/:id` | Lesson meta + DEMO.md |
+| `POST /api/v1/lessons/:id/quiz` | Score quiz `{ answers: number[] }` |
+| `GET /api/v1/lessons/:id/assist` | ASSIST.md when available |
+| `GET /api/v1/docs/:slug` | Offline docs excerpt |
+| `GET /api/v1/openapi.json` | OpenAPI stub |
+
+Live: **https://steele-bz.pages.dev/api/v1/catalog**
+
+Source content: [cursor-training-baseline](https://github.com/klsteele64-tech/cursor-training-baseline) (`stream/api-baseline`). See [training-api/README.md](training-api/README.md) and [examples/site-integration/api-client.js](examples/site-integration/api-client.js).
 
 ## Local development
 
@@ -31,7 +51,7 @@ npm run build
 npm run preview
 ```
 
-Open the portfolio at `http://localhost:4321` during `npm run dev`. After `npm run build && npm run preview`, test the full site (including `/api/github/repos` and `/apps/burger-buds/`) at `http://localhost:8788`.
+Open the portfolio at `http://localhost:4321` during `npm run dev`. After `npm run build && npm run preview`, test the full site (including `/health`, `/api/v1/catalog`, `/api/github/repos`, and `/apps/burger-buds/`) at `http://localhost:8788`.
 
 ## Cloudflare Pages deployment
 
@@ -84,8 +104,8 @@ Posts appear automatically on `/blog`.
 |---------|-------------|
 | `npm run dev` | Astro dev server for portfolio |
 | `npm run dev:apps` | Burger Buds dev with `/apps/burger-buds/` base |
-| `npm run build` | Build site + apps → unified `dist/` |
-| `npm run preview` | Local Cloudflare Pages preview |
+| `npm run build` | Bundle training API + build site + apps → `dist/` |
+| `npm run preview` | Local Cloudflare Pages preview (portfolio + APIs) |
 
 ## License
 
