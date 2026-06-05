@@ -1,5 +1,7 @@
 node_modules/
 dist/
+!training-api/dist/
+!training-api/dist/bundled-content.json
 .DS_Store
 *.log
 .env
