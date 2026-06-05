@@ -44,6 +44,9 @@ After the first deploy succeeds, check:
 - https://steele-bz.pages.dev/health
 - https://steele-bz.pages.dev/api/v1/catalog
 - https://steele-bz.pages.dev/api/v1/lessons/L01
+- https://steele-bz.pages.dev/apps/training/baseline/
+- https://steele-bz.pages.dev/apps/training/lenstemper/
+- https://steele-bz.pages.dev/apps/training/superpowers/
 
 ## CLI alternative (optional)
 

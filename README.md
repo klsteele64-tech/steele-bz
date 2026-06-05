@@ -8,14 +8,30 @@ Personal portfolio and app hub for [steele.bz](https://steele.bz). Built as a mo
 steele-bz/
 ├── site/                 # Astro portfolio (home, projects, apps, blog, about, contact)
 ├── apps/burger-buds/     # React + Vite menu app at /apps/burger-buds/
-├── functions/            # Cloudflare Pages Functions (GitHub API + Training API)
-├── training-api/         # Hono app + bundled lesson content
+├── apps/training/        # Three Cursor training web apps (baseline, lenstemper, superpowers)
+├── training-streams/     # Bundled content + shared Hono API per stream
+├── functions/            # Cloudflare Pages Functions (GitHub API + Training APIs)
+├── training-api/         # Legacy baseline API docs (see training-streams/)
 ├── examples/             # Site integration sample (vanilla JS fetch)
 ├── scripts/build-all.mjs # Unified build → dist/
 └── dist/                 # Deploy output (gitignored)
 ```
 
-## Cursor Training API
+## Cursor Training (3 plans)
+
+Three self-contained training web apps on Cloudflare Pages — each plan is a full player (catalog, lesson, timer, quiz, progress in localStorage) backed by its own API:
+
+| Plan | Web app | API base |
+|------|---------|----------|
+| **Baseline** (40 lessons) | [/apps/training/baseline/](https://steele-bz.pages.dev/apps/training/baseline/) | `/api/training/baseline/v1` |
+| **LensTemper** (phased, prerequisites) | [/apps/training/lenstemper/](https://steele-bz.pages.dev/apps/training/lenstemper/) | `/api/training/lenstemper/v1` |
+| **Superpowers** (v1, 12 lessons) | [/apps/training/superpowers/](https://steele-bz.pages.dev/apps/training/superpowers/) | `/api/training/superpowers/v1` |
+
+Legacy baseline alias: `/api/v1/*` → same content as baseline stream.
+
+Build bundles lesson content from sibling repos (`cursor-training-baseline`, `cursor-training-lenstemper`, `cursor-training-superpowers`) via `npm run build`.
+
+## Cursor Training API (baseline alias)
 
 The 40-lesson baseline curriculum is served as a Web API on this Pages project:
 
