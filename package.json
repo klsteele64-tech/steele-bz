@@ -7,10 +7,14 @@
     "site",
     "apps/*"
   ],
+  "dependencies": {
+    "hono": "^4.7.4"
+  },
   "scripts": {
     "dev": "npm run dev --workspace=site",
     "dev:apps": "VITE_BASE=/apps/burger-buds/ npm run dev --workspace=burger-buds",
-    "build": "node scripts/build-all.mjs",
+    "bundle:training-api": "node scripts/bundle-training-api.mjs",
+    "build": "node scripts/bundle-training-api.mjs && node scripts/build-all.mjs",
     "build:site": "npm run build --workspace=site",
     "preview": "npx wrangler pages dev dist --port 8788"
   },

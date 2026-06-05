@@ -41,6 +41,9 @@ After the first deploy succeeds, check:
 - https://steele.bz/projects
 - https://steele.bz/apps/burger-buds/
 - https://steele.bz/api/github/repos
+- https://steele-bz.pages.dev/health
+- https://steele-bz.pages.dev/api/v1/catalog
+- https://steele-bz.pages.dev/api/v1/lessons/L01
 
 ## CLI alternative (optional)
 
