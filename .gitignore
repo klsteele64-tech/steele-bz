@@ -2,6 +2,8 @@ node_modules/
 dist/
 !training-api/dist/
 !training-api/dist/bundled-content.json
+!training-streams/*/dist/
+!training-streams/*/dist/bundled-content.json
 .DS_Store
 *.log
 .env

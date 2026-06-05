@@ -6,5 +6,29 @@
     "path": "/apps/burger-buds/",
     "tags": ["React", "Vite"],
     "featured": true
+  },
+  {
+    "slug": "training-baseline",
+    "title": "Cursor Training — Baseline",
+    "description": "40-lesson Cursor AI training (baseline plan). Catalog, 5-min lessons, quiz, docs, and assist.",
+    "path": "/apps/training/baseline/",
+    "tags": ["Training", "API"],
+    "featured": true
+  },
+  {
+    "slug": "training-lenstemper",
+    "title": "Cursor Training — LensTemper",
+    "description": "Phased Cursor training with prerequisites, capability gates, docs, and assist.",
+    "path": "/apps/training/lenstemper/",
+    "tags": ["Training", "API"],
+    "featured": false
+  },
+  {
+    "slug": "training-superpowers",
+    "title": "Cursor Training — Superpowers",
+    "description": "YAGNI v1 Cursor training — 12 lessons, minimal API surface.",
+    "path": "/apps/training/superpowers/",
+    "tags": ["Training", "API"],
+    "featured": false
   }
 ]

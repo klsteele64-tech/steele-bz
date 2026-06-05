@@ -46,4 +46,7 @@ mkdirSync(distRoot, { recursive: true });
 copyDir(siteDist, distRoot);
 copyDir(burgerDist, join(distRoot, "apps", "burger-buds"));
 
+console.log("Copying training web apps...");
+run("node", ["scripts/build-training-apps.mjs"]);
+
 console.log("Build complete → dist/");
