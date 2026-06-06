@@ -48,5 +48,6 @@ copyDir(burgerDist, join(distRoot, "apps", "burger-buds"));
 
 console.log("Copying training web apps...");
 run("node", ["scripts/build-training-apps.mjs"]);
+run("node", ["scripts/copy-training-media.mjs", "superpowers"]);
 
 console.log("Build complete → dist/");
