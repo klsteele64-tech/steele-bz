@@ -25,17 +25,8 @@ function copyDir(src, dest) {
 console.log("Building Astro site...");
 run("npm", ["run", "build", "--workspace=site"]);
 
-console.log("Building burger-buds app...");
-run("npm", ["run", "build", "--workspace=burger-buds"], {
-  env: {
-    ...process.env,
-    VITE_BASE: "/apps/burger-buds/",
-  },
-});
-
 const distRoot = join(root, "dist");
 const siteDist = join(root, "site", "dist");
-const burgerDist = join(root, "apps", "burger-buds", "dist");
 
 console.log("Assembling unified dist/...");
 if (existsSync(distRoot)) {
@@ -44,7 +35,6 @@ if (existsSync(distRoot)) {
 mkdirSync(distRoot, { recursive: true });
 
 copyDir(siteDist, distRoot);
-copyDir(burgerDist, join(distRoot, "apps", "burger-buds"));
 
 console.log("Copying training web apps...");
 run("node", ["scripts/build-training-apps.mjs"]);
