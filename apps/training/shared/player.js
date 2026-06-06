@@ -137,10 +137,19 @@ async function renderLesson(id) {
     ? `<div class="prereq-warn">Prerequisites not complete: ${preCheck.missing.join(", ")}.</div>`
     : "";
 
+  const video = lesson.video;
+  let videoHtml = "";
+  if (video?.status === "ready" && video.url) {
+    videoHtml = `<div class="lesson-video"><video controls preload="metadata" src="${video.url}"></video></div>`;
+  } else if (video?.fallback?.message) {
+    videoHtml = `<div class="video-fallback" role="note">${video.fallback.message}</div>`;
+  }
+
   app.innerHTML = `
     <p><a href="index.html">← Catalog</a></p>
     <h2>${lesson.id}: ${lesson.title}</h2>
     ${preWarning}
+    ${videoHtml}
     <nav class="tabs" role="tablist">
       <button type="button" role="tab" aria-selected="true" data-tab="lesson">Lesson</button>
       <button type="button" role="tab" aria-selected="false" data-tab="docs">Docs</button>
@@ -299,7 +308,13 @@ function renderHome(catalog) {
         const a = document.createElement("a");
         a.className = "lesson-card" + (completed[lid] ? " done" : "");
         a.href = `lesson.html?id=${lid}`;
-        a.textContent = `${lid}: ${lesson.title} (${lesson.level || ""})`;
+        const req =
+          lesson.required === false
+            ? " · optional"
+            : catalog.requiredCount
+              ? ""
+              : "";
+        a.textContent = `${lid}: ${lesson.title} (${lesson.level || ""})${req}`;
         if (!pre.ok) {
           a.classList.add("locked");
           a.title = `Prerequisites: ${pre.missing.join(", ")}`;
