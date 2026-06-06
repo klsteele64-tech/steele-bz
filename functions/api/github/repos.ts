@@ -25,10 +25,11 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
     headers.Authorization = `Bearer ${env.GITHUB_TOKEN}`;
   }
 
-  const response = await fetch(
-    "https://api.github.com/users/klsteele64-tech/repos?sort=updated&per_page=100",
-    { headers },
-  );
+  const apiUrl = env.GITHUB_TOKEN
+    ? "https://api.github.com/user/repos?affiliation=owner&sort=updated&per_page=100"
+    : "https://api.github.com/users/klsteele64-tech/repos?sort=updated&per_page=100";
+
+  const response = await fetch(apiUrl, { headers });
 
   if (!response.ok) {
     return Response.json(

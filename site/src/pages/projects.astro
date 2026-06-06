@@ -1,17 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
-import GitHubRepos from "../components/GitHubRepos.astro";
 import projects from "../data/projects.json";
+
+const featuredProjects = projects.filter((project) => project.featured);
+const otherProjects = projects.filter((project) => !project.featured);
 ---
 
 <BaseLayout title="Projects" description="Curated projects and GitHub repositories by Kasey Steele.">
   <h1>Projects</h1>
-  <p class="lead">Featured work and live repositories from GitHub.</p>
+  <p class="lead">Featured work and repositories from GitHub.</p>
 
   <h2>Featured</h2>
   <div class="card-grid">
-    {projects.map((project) => (
+    {featuredProjects.map((project) => (
       <Card
         title={project.title}
         description={project.description}
@@ -21,6 +23,15 @@ import projects from "../data/projects.json";
     ))}
   </div>
 
-  <h2>GitHub repositories</h2>
-  <GitHubRepos />
+  <h2>All repositories</h2>
+  <div class="card-grid">
+    {otherProjects.map((project) => (
+      <Card
+        title={project.title}
+        description={project.description}
+        tags={project.tags}
+        href={project.url}
+      />
+    ))}
+  </div>
 </BaseLayout>
