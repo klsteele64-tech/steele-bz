@@ -6,13 +6,5 @@
     "tags": ["Astro", "Cloudflare Pages", "TypeScript"],
     "url": "https://github.com/klsteele64-tech/steele-bz",
     "featured": true
-  },
-  {
-    "slug": "burger-buds-menu",
-    "title": "Burger Buds Menu",
-    "description": "Mobile-friendly menu web app for Burger Buds locations in Enumclaw and Maple Valley, WA. Built with React, Vite, and Capacitor.",
-    "tags": ["React", "Vite", "Capacitor"],
-    "url": "https://github.com/klsteele64-tech/burger-buds-menu",
-    "featured": true
   }
 ]

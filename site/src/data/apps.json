@@ -1,13 +1,5 @@
 [
   {
-    "slug": "burger-buds",
-    "title": "Burger Buds Menu",
-    "description": "Interactive menu for Burger Buds — smash burgers in Enumclaw and Maple Valley, WA.",
-    "path": "/apps/burger-buds/",
-    "tags": ["React", "Vite"],
-    "featured": true
-  },
-  {
     "slug": "training-baseline",
     "title": "Cursor Training — Baseline",
     "description": "40-lesson Cursor AI training (baseline plan). Catalog, 5-min lessons, quiz, docs, and assist.",
