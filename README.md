@@ -7,7 +7,6 @@ Personal portfolio and app hub for [steele.bz](https://steele.bz). Built as a mo
 ```
 steele-bz/
 ├── site/                 # Astro portfolio (home, projects, apps, blog, about, contact)
-├── apps/burger-buds/     # React + Vite menu app at /apps/burger-buds/
 ├── apps/training/        # Three Cursor training web apps (baseline, lenstemper, superpowers)
 ├── training-streams/     # Bundled content + shared Hono API per stream
 ├── functions/            # Cloudflare Pages Functions (GitHub API + Training APIs)
@@ -57,9 +56,6 @@ npm install
 # Portfolio site only
 npm run dev
 
-# Burger Buds app with path base
-npm run dev:apps
-
 # Full production build
 npm run build
 
@@ -67,7 +63,7 @@ npm run build
 npm run preview
 ```
 
-Open the portfolio at `http://localhost:4321` during `npm run dev`. After `npm run build && npm run preview`, test the full site (including `/health`, `/api/v1/catalog`, `/api/github/repos`, and `/apps/burger-buds/`) at `http://localhost:8788`.
+Open the portfolio at `http://localhost:4321` during `npm run dev`. After `npm run build && npm run preview`, test the full site (including `/health`, `/api/v1/catalog`, and `/api/github/repos`) at `http://localhost:8788`.
 
 ## Cloudflare Pages deployment
 
@@ -119,7 +115,6 @@ Posts appear automatically on `/blog`.
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Astro dev server for portfolio |
-| `npm run dev:apps` | Burger Buds dev with `/apps/burger-buds/` base |
 | `npm run build` | Bundle training API + build site + apps → `dist/` |
 | `npm run preview` | Local Cloudflare Pages preview (portfolio + APIs) |
 

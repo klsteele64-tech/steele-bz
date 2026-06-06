@@ -4,7 +4,8 @@ description: >-
   Run when the user says "create plan", "create a plan", or enters plan mode
   for implementation planning. After the initial plan is approved, runs 3
   refinement iterations (headless brainstorming, LensTemper review, tri-plan
-  merge) and writes a final consolidated plan.
+  merge) and writes a final consolidated plan plus per-iteration changelogs
+  listing what changed and why.
 ---
 
 # Plan Refinement Pipeline
@@ -38,6 +39,21 @@ description: >-
 | `run_mode` | `full_hosted` |
 | `run_scope` | `selected_lenses` (change to `six_lens` for all 6 lenses) |
 | Artifact root | `docs/plans/refinement/<yyyy-mm-dd>-<feature-slug>/` |
+
+### Artifact layout
+
+```
+docs/plans/refinement/<yyyy-mm-dd>-<feature-slug>/
+├── iter-0-baseline.md
+├── iter-1-brainstorm.md
+├── iter-1-merged.md
+├── iter-1-changelog.md      # diff + why vs iter-0-baseline
+├── iter-1-lenstemper/
+├── iter-2-...
+├── iter-3-...
+├── final-plan.md
+└── REFINEMENT_SUMMARY.md    # cumulative diff + links to all changelogs
+```
 
 ## Phase 0 — Initial plan
 
@@ -116,6 +132,18 @@ Read `merge-protocol.md` in this skill directory.
 
 Append a short entry to a running merge log (in memory until Phase 4).
 
+### Step 4b: Plan changelog (required)
+
+After saving `iter-<N>-merged.md`, write `docs/plans/refinement/<slug>/iter-<N>-changelog.md`.
+
+Follow the **Plan changelog** section in `merge-protocol.md`. Every material edit in the merged plan must appear as a row with:
+
+- **What changed** — concrete before/after (section, task, file path, acceptance criterion)
+- **Why** — one sentence tying the edit to a brainstorm suggestion, LensTemper finding, or merge decision
+- **Source** — `brainstorm`, `LensTemper (<lens>)`, or `merge`
+
+Do not merge without writing the changelog. If nothing changed, say so explicitly and list suggestions that were reviewed but rejected.
+
 ### Step 5: Stability note
 
 Compare `iter-<N>-merged.md` to `plan-in`. If line change is under ~5%, note diminishing returns in the merge log (informational only — continue to next iteration).
@@ -127,11 +155,15 @@ After iteration 3:
 1. Copy `iter-3-merged.md` → `final-plan.md`
 2. Write `REFINEMENT_SUMMARY.md` containing:
    - Original request and slug
+   - **Cumulative diff:** `iter-0-baseline.md` → `final-plan.md` — major sections/tasks added, removed, or rewritten, with one-line why each changed
+   - **Per-iteration changelog index** — link each `iter-<N>-changelog.md` and a 2–3 sentence rollup of what differed from the prior plan and why
    - Per-iteration summary: key brainstorm findings, LensTemper critical/accepted items applied, merge decisions
    - Stability notes per iteration
    - Remaining risks and deferred items
    - Paths to all artifacts
-3. Present `final-plan.md` to the user with a brief summary of what changed across iterations
+3. Present `final-plan.md` to the user with:
+   - A brief summary of what changed across iterations
+   - The most important before/after differences and why each was made (pull from changelogs)
 
 ## Upgrading to six lenses
 

@@ -71,6 +71,69 @@ Before saving:
 - [ ] Scope matches original intent (no unrequested feature creep)
 - [ ] Plan header and task checkbox format preserved
 - [ ] File paths in tasks remain exact and valid
+- [ ] `iter-<N>-changelog.md` lists every material change with before/after and why
+
+## Plan changelog (required per iteration)
+
+After each merge, write `iter-<N>-changelog.md` comparing **`plan-in`** → **`iter-<N>-merged.md`**.
+
+Use this structure:
+
+```markdown
+# Plan Changelog — Iteration <N>
+
+> **From:** `<plan-in>`
+> **To:** `iter-<N>-merged.md`
+
+## Summary
+
+| Metric | Count |
+|--------|-------|
+| Sections modified | |
+| Tasks added | |
+| Tasks removed | |
+| Tasks rewritten | |
+| Unchanged (reviewed) | |
+
+One paragraph: what materially changed this iteration and the main drivers (brainstorm vs LensTemper).
+
+## Changes
+
+List every **material** edit. Skip typos and formatting-only fixes unless they change meaning.
+
+### 1. [Section, task, or plan element]
+
+| | Before | After |
+|---|--------|-------|
+| Text / scope | ... | ... |
+
+**Why:** One sentence — what problem this fixes or what risk it addresses.
+
+**Source:** `brainstorm` | `LensTemper (architecture, implementation, or risk)` | `merge`
+
+**Trigger:** Quote or paraphrase the brainstorm bullet, synthesis finding, or decision that caused this edit.
+
+(repeat for each change)
+
+## Considered but not applied
+
+| Suggestion | Source | Reason kept out |
+|------------|--------|-----------------|
+| ... | brainstorm / LensTemper | rejected, downgraded, out of scope, deferred, or superseded by ... |
+
+## Iteration delta stats
+
+- **Line change vs `plan-in`:** [approximate % or substantial/minimal]
+- **Diminishing returns?** [yes/no — under ~5% substantive change]
+```
+
+### Changelog rules
+
+- **Before/after must be specific** — quote or paraphrase the old and new wording, file paths, or task steps; do not write "improved architecture section" without saying how.
+- **Why must cite a source** — every row needs a brainstorm item, LensTemper finding (with lens), or explicit merge conflict resolution.
+- **One row per material edit** — group related checkbox steps only when they share one rationale.
+- **No silent edits** — if the merged plan differs from `plan-in`, the changelog must account for it.
+- **Empty iterations** — if nothing changed, state that and list what was reviewed in brainstorm and synthesis.
 
 ## Merge log entry (for REFINEMENT_SUMMARY.md)
 
@@ -80,11 +143,13 @@ After each merge, record:
 ## Iteration <N>
 
 - **Baseline:** `<plan-in>`
+- **Merged plan:** `iter-<N>-merged.md`
+- **Changelog:** `iter-<N>-changelog.md` — read this for the full before/after list and per-change rationale
+- **Top changes:** [3–5 bullets — each = what changed + why in one line]
 - **Brainstorm highlights:** [1–3 bullets]
 - **LensTemper applied:** [accepted critical/important items]
 - **Conflicts resolved:** [if any]
 - **Line change vs baseline:** [approximate % or "substantial/minimal"]
-- **Output:** `iter-<N>-merged.md`
 ```
 
 ## Stability check

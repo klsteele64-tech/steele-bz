@@ -3,16 +3,80 @@
     "slug": "steele-bz",
     "title": "Steele.bz",
     "description": "Personal portfolio and app hub — this site. Monorepo with Astro, GitHub integration, and path-based app hosting on Cloudflare Pages.",
-    "tags": ["Astro", "Cloudflare Pages", "TypeScript"],
+    "tags": ["Astro", "Cloudflare Pages", "JavaScript"],
     "url": "https://github.com/klsteele64-tech/steele-bz",
     "featured": true
   },
   {
-    "slug": "burger-buds-menu",
-    "title": "Burger Buds Menu",
-    "description": "Mobile-friendly menu web app for Burger Buds locations in Enumclaw and Maple Valley, WA. Built with React, Vite, and Capacitor.",
-    "tags": ["React", "Vite", "Capacitor"],
-    "url": "https://github.com/klsteele64-tech/burger-buds-menu",
+    "slug": "cursor-training-baseline",
+    "title": "Cursor Training — Baseline",
+    "description": "Cursor AI training — baseline stream (40 lessons).",
+    "tags": ["TypeScript", "Training"],
+    "url": "https://github.com/klsteele64-tech/cursor-training-baseline",
     "featured": true
+  },
+  {
+    "slug": "cursor-training-lenstemper",
+    "title": "Cursor Training — LensTemper",
+    "description": "Cursor AI training — LensTemper phased stream with prerequisites and capability gates.",
+    "tags": ["TypeScript", "Training"],
+    "url": "https://github.com/klsteele64-tech/cursor-training-lenstemper",
+    "featured": true
+  },
+  {
+    "slug": "cursor-training-superpowers",
+    "title": "Cursor Training — Superpowers",
+    "description": "Cursor AI training — Superpowers v1 (12 lessons).",
+    "tags": ["TypeScript", "Training"],
+    "url": "https://github.com/klsteele64-tech/cursor-training-superpowers",
+    "featured": true
+  },
+  {
+    "slug": "2dcuttingproject",
+    "title": "2D Plasma Cutting",
+    "description": "Plan for developing custom 2D plasma-cutting software.",
+    "tags": ["CAD", "CNC"],
+    "url": "https://github.com/klsteele64-tech/2dcuttingproject",
+    "featured": false
+  },
+  {
+    "slug": "android-Egg-managment",
+    "title": "Android Egg Management",
+    "description": "Android app for egg production management.",
+    "tags": ["Android", "Mobile"],
+    "url": "https://github.com/klsteele64-tech/android-Egg-managment",
+    "featured": false
+  },
+  {
+    "slug": "iOS-EggManagement",
+    "title": "iOS Egg Management",
+    "description": "iOS app for egg production management and flock tracking.",
+    "tags": ["iOS", "Mobile"],
+    "url": "https://github.com/klsteele64-tech/iOS-EggManagement",
+    "featured": false
+  },
+  {
+    "slug": "Egg-tracker",
+    "title": "Egg Tracker",
+    "description": "Egg production tracking utilities and experiments.",
+    "tags": ["Utilities"],
+    "url": "https://github.com/klsteele64-tech/Egg-tracker",
+    "featured": false
+  },
+  {
+    "slug": "Mac-file-manager",
+    "title": "Mac File Manager",
+    "description": "macOS file manager experiments and utilities.",
+    "tags": ["macOS", "Utilities"],
+    "url": "https://github.com/klsteele64-tech/Mac-file-manager",
+    "featured": false
+  },
+  {
+    "slug": "vs-code-projects",
+    "title": "VS Code Projects",
+    "description": "Miscellaneous VS Code extensions, snippets, and tooling experiments.",
+    "tags": ["VS Code", "Tooling"],
+    "url": "https://github.com/klsteele64-tech/vs-code-projects",
+    "featured": false
   }
 ]

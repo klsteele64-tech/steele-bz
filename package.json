@@ -12,7 +12,6 @@
   },
   "scripts": {
     "dev": "npm run dev --workspace=site",
-    "dev:apps": "VITE_BASE=/apps/burger-buds/ npm run dev --workspace=burger-buds",
     "bundle:training-api": "node scripts/bundle-training-api.mjs",
     "build": "node scripts/bundle-training-api.mjs && node scripts/build-all.mjs",
     "build:site": "npm run build --workspace=site",

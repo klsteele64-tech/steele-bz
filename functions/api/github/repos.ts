@@ -11,6 +11,9 @@ interface GitHubRepo {
   fork: boolean;
 }
 
+/** Repos excluded from the portfolio GitHub list */
+const EXCLUDED_REPO_NAMES = new Set(["burger-buds-menu", "burger-buds"]);
+
 export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
   const headers: Record<string, string> = {
     Accept: "application/vnd.github+json",
@@ -22,10 +25,11 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
     headers.Authorization = `Bearer ${env.GITHUB_TOKEN}`;
   }
 
-  const response = await fetch(
-    "https://api.github.com/users/klsteele64-tech/repos?sort=updated&per_page=100",
-    { headers },
-  );
+  const apiUrl = env.GITHUB_TOKEN
+    ? "https://api.github.com/user/repos?affiliation=owner&sort=updated&per_page=100"
+    : "https://api.github.com/users/klsteele64-tech/repos?sort=updated&per_page=100";
+
+  const response = await fetch(apiUrl, { headers });
 
   if (!response.ok) {
     return Response.json(
@@ -36,7 +40,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
 
   const repos = (await response.json()) as GitHubRepo[];
   const publicRepos = repos
-    .filter((repo) => !repo.fork)
+    .filter((repo) => !repo.fork && !EXCLUDED_REPO_NAMES.has(repo.name))
     .map(({ name, description, html_url, language, stargazers_count }) => ({
       name,
       description,
