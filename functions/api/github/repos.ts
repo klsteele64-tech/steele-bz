@@ -11,6 +11,9 @@ interface GitHubRepo {
   fork: boolean;
 }
 
+/** Repos excluded from the portfolio GitHub list */
+const EXCLUDED_REPO_NAMES = new Set(["burger-buds-menu", "burger-buds"]);
+
 export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
   const headers: Record<string, string> = {
     Accept: "application/vnd.github+json",
@@ -36,7 +39,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
 
   const repos = (await response.json()) as GitHubRepo[];
   const publicRepos = repos
-    .filter((repo) => !repo.fork)
+    .filter((repo) => !repo.fork && !EXCLUDED_REPO_NAMES.has(repo.name))
     .map(({ name, description, html_url, language, stargazers_count }) => ({
       name,
       description,
