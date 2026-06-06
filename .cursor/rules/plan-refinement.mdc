@@ -11,8 +11,8 @@ When the user says **"create plan"**, **"create a plan"**, or asks for an implem
 2. Research the codebase and create the initial plan (use `CreatePlan` in plan mode when appropriate)
 3. **Wait for user approval** of the initial plan before starting refinement
 4. After approval, run all **3 refinement iterations** (headless brainstorm → LensTemper → tri-plan merge)
-5. Write artifacts under `docs/plans/refinement/<yyyy-mm-dd>-<feature-slug>/`
-6. Present `final-plan.md` and `REFINEMENT_SUMMARY.md` when complete
+5. Write artifacts under `docs/plans/refinement/<yyyy-mm-dd>-<feature-slug>/`, including `iter-<N>-changelog.md` for each iteration (before/after diffs and why)
+6. Present `final-plan.md` and `REFINEMENT_SUMMARY.md` when complete — summary must include cumulative diff from baseline and why each major change was made
 7. Do **not** start implementation until the user approves the final plan
 
 If a `postToolUse` hook injects refinement context after `CreatePlan`, treat that as a required follow-up once the plan is approved.
